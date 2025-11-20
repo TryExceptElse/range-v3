@@ -101,6 +101,11 @@ namespace ranges
 
     using compressed_tuple_detail::compressed_tuple;
 
+// Suppress deprecated declaration usage within `make_compressed_tuple`,
+// which is itself deprecated
+RANGES_DIAGNOSTIC_PUSH
+RANGES_DIAGNOSTIC_IGNORE_DEPRECATED_DECLARATIONS
+
     struct make_compressed_tuple_fn
     {
         // clang-format off
@@ -117,6 +122,8 @@ namespace ranges
     /// \ingroup group-utility
     /// \sa `make_compressed_tuple_fn`
     RANGES_INLINE_VARIABLE(make_compressed_tuple_fn, make_compressed_tuple)
+
+RANGES_DIAGNOSTIC_POP
 
     template<typename First, typename Second>
     struct RANGES_EMPTY_BASES compressed_pair
